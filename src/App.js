@@ -31,12 +31,17 @@ function App() {
       });
   }, []);
 
+  console.log(newsArticles);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<NewsGallery newsArticles={newsArticles} />} />
-          <Route path="/:id" element={<SingleStory />} />
+          <Route
+            path="/:id"
+            element={<SingleStory newsArticles={newsArticles} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
