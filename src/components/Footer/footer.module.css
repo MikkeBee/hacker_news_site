@@ -1,8 +1,9 @@
 footer {
   height: 1rem;
   background-color: blue;
+  margin-top: auto;
   position: sticky;
-  bottom: 0;
+  bottom: -15rem;
   padding: 1.5rem;
   color: white;
   margin-top: 1.5rem;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import classes from "./newsgallery.module.css";
 
@@ -10,7 +11,7 @@ const NewsGallery = () => {
       .get("https://hacker-news.firebaseio.com/v0/topstories.json")
       .then((res) => {
         const ids = res.data.filter((id, index) => {
-          if (index < 100) {
+          if (index < 20) {
             return id;
           }
         });
@@ -31,17 +32,17 @@ const NewsGallery = () => {
   console.log(testItem);
 
   return (
-    <section className={classes.newsGallery}>
+    <div className={classes.newsGallery}>
       <ol type="1">
         {testItem
           //   .filter((item, index) => index < 20)
           .map((item) => (
             <li key={item.id} className={classes.newsItem}>
-              {item.title}
+              <Link to={`/${item.id}`}>{item.title}</Link>
             </li>
           ))}
       </ol>
-    </section>
+    </div>
   );
 };
 
