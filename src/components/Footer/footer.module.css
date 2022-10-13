@@ -1,15 +1,15 @@
 footer {
   height: 1rem;
   background-color: blue;
-  margin-top: auto;
-  position: sticky;
-  bottom: -15rem;
+  position: absolute;
   padding: 1.5rem;
   color: white;
+  bottom: 0rem;
   margin-top: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100vw;
 }
 
 footer a {

@@ -7,6 +7,7 @@ import SingleStory from "./components/SingleStory/SingleStory";
 
 function App() {
   const [newsArticles, setArticleData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -27,6 +28,7 @@ function App() {
           .then((data) => {
             const articles = data.flat().map((item) => item.data);
             setArticleData(articles);
+            setLoading(false);
           });
       });
   }, []);
@@ -37,7 +39,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<NewsGallery newsArticles={newsArticles} />} />
+          <Route
+            index
+            element={
+              <NewsGallery isLoading={isLoading} newsArticles={newsArticles} />
+            }
+          />
           <Route
             path="/:id"
             element={<SingleStory newsArticles={newsArticles} />}

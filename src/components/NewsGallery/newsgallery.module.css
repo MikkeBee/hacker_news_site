@@ -1,7 +1,30 @@
 .newsGallery {
   padding-left: 1rem;
+  padding-bottom: 4rem;
+}
+
+.ring {
+  position: absolute;
+  top: 20rem;
+  right: 40%;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  border-left: 1rem solid blue;
+  border-top: 1rem solid blue;
+  animation: animate 4s linear infinite;
 }
 
 .newsItem {
   padding: 0.2rem;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
