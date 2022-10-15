@@ -1,12 +1,13 @@
 import React from "react";
-// import Header from "../components/Header";
 import Footer from "../components/Footer/Footer";
 import Main from "../components/Main/Main";
+import classes from "./layout.module.css";
 
-const Layout = () => {
+const Layout = ({ isLoading, error }) => {
   return (
-    <main className="layoutDiv">
-      {/* <Header /> */}
+    <main>
+      {isLoading && <div className={classes.ring}></div>}
+      {error && <p className={classes.errorMessage}>{error}</p>}
       <Main />
       <Footer />
     </main>

@@ -7,9 +7,11 @@ import SingleStory from "./components/SingleStory/SingleStory";
 
 function App() {
   const [newsArticles, setArticleData] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("https://hacker-news.firebaseio.com/v0/topstories.json")
       .then((res) => {
@@ -29,22 +31,24 @@ function App() {
             const articles = data.flat().map((item) => item.data);
             setArticleData(articles);
             setLoading(false);
+          })
+          .catch((error) => {
+            setLoading(false);
+            setError("Something went wrong, please try again!");
           });
       });
-  }, []);
+  }, [setError]);
 
   console.log(newsArticles);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <NewsGallery isLoading={isLoading} newsArticles={newsArticles} />
-            }
-          />
+        <Route
+          path="/"
+          element={<Layout isLoading={isLoading} error={error} />}
+        >
+          <Route index element={<NewsGallery newsArticles={newsArticles} />} />
           <Route
             path="/:id"
             element={<SingleStory newsArticles={newsArticles} />}

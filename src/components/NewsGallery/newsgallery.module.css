@@ -3,28 +3,32 @@
   padding-bottom: 4rem;
 }
 
-.ring {
-  position: absolute;
-  top: 20rem;
-  right: 40%;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  border-left: 1rem solid blue;
-  border-top: 1rem solid blue;
-  animation: animate 4s linear infinite;
+ol {
+  list-style: none;
+  counter-reset: num;
+}
+
+ol a {
+  display: block;
+  width: 45rem;
 }
 
 .newsItem {
-  padding: 0.2rem;
+  counter-increment: num;
+  padding: 1rem;
+  background-color: white;
+  width: 45rem;
+  margin: 1rem;
+  border-radius: 5px;
+  border: rgb(130, 130, 130) 2px;
+  border-style: solid;
 }
 
-@keyframes animate {
-  0% {
-    transform: rotate(0deg);
-  }
+.newsItem:hover {
+  background-color: rgb(201, 201, 201);
+  transform: scale(105%);
+}
 
-  100% {
-    transform: rotate(360deg);
-  }
+.newsItem:before {
+  content: counter(num) ". ";
 }

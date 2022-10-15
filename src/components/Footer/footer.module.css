@@ -1,7 +1,7 @@
 footer {
   height: 1rem;
   background-color: blue;
-  position: absolute;
+  position: fixed;
   padding: 1.5rem;
   color: white;
   bottom: 0rem;
