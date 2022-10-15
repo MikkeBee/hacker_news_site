@@ -1,9 +1,13 @@
 .newsGallery {
   padding-left: 1rem;
   padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ol {
+  padding: 0;
   list-style: none;
   counter-reset: num;
 }
@@ -35,11 +39,20 @@ ol a {
   content: counter(num) ". ";
 }
 
-@media (max-width: 1051px) {
-  .newsGallery {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@media (max-width: 695px) {
+  ol a {
+    width: 35rem;
+  }
+}
+
+@media (max-width: 537px) {
+  ol a {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 382px) {
+  ol a {
+    width: 20rem;
   }
 } ;

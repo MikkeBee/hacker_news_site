@@ -14,16 +14,18 @@ const SingleStory = ({ newsArticles }) => {
 
   if (newsArticles.length > 0) {
     return (
-      <section className={classes.articleGallery}>
-        <h1>{newsArticle.title}</h1>
-        <p>Added by: {newsArticle.by}</p>
-        <p>Date: {unixConversion()}</p>
-        <p>
-          Link:{" "}
-          <a href="{newsArticle.url}" target="_blank">
-            {newsArticle.url}
-          </a>
-        </p>
+      <section className={classes.flexSection}>
+        <div className={classes.articleGallery}>
+          <h1>{newsArticle.title}</h1>
+          <p>Added by: {newsArticle.by}</p>
+          <p>Date: {unixConversion()}</p>
+          <p>
+            Link:{" "}
+            <a href="{newsArticle.url}" target="_blank">
+              {newsArticle.url}
+            </a>
+          </p>
+        </div>
       </section>
     );
   }
