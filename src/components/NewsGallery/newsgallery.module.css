@@ -11,6 +11,7 @@ ol {
 ol a {
   display: block;
   width: 45rem;
+  text-decoration: none;
 }
 
 .newsItem {
