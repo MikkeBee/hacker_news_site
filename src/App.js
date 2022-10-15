@@ -35,11 +35,7 @@ function App() {
       .get("https://hacker-news.firebaseio.com/v0/topstories.json")
       .then((res) => {
         setAllArticleIDs(res.data);
-        const ids = res.data.filter((id, index) => {
-          if (index < 20) {
-            return id;
-          }
-        });
+        const ids = res.data.filter((id, index) => index < 20);
         getItems(ids);
       });
   }, [setError]);
