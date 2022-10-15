@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classes from "./newsgallery.module.css";
+import LoadButton from "../LoadButton/LoadButton";
 
-const NewsGallery = ({ newsArticles }) => {
+const NewsGallery = ({ allArticleIDs, getItems, newsArticles }) => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 500) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  const clickHandler = () => {
+    const fetchedIDs = newsArticles.map(({ id }) => id);
+    const nextFetchIDs = allArticleIDs
+      //filters out all IDs that are not in fetchedIDs
+      .filter((id) => !fetchedIDs.includes(id))
+      .filter((id, index) => index < 20);
+    getItems(nextFetchIDs);
+  };
+
   if (newsArticles.length > 0) {
     return (
       <div className={classes.newsGallery}>
@@ -13,6 +35,7 @@ const NewsGallery = ({ newsArticles }) => {
             </Link>
           ))}
         </ol>
+        {showButton && <LoadButton clickHandler={clickHandler} />}
       </div>
     );
   }

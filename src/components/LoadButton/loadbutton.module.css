@@ -1,2 +1,12 @@
 .loadButton {
+  height: 3rem;
+  width: 12rem;
+  background-color: blue;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  cursor: pointer;
 }

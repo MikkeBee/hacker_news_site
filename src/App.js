@@ -9,37 +9,40 @@ function App() {
   const [newsArticles, setArticleData] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [allArticleIDs, setAllArticleIDs] = useState([]);
+
+  const getItems = (ids) => {
+    axios
+      .all(
+        ids.map((id) =>
+          axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+        )
+      )
+      .then((data) => {
+        const articles = data.flat().map((item) => item.data);
+        setArticleData([...newsArticles, ...articles]);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setError("Something went wrong, please try again!");
+      });
+  };
 
   useEffect(() => {
     setLoading(true);
     axios
       .get("https://hacker-news.firebaseio.com/v0/topstories.json")
       .then((res) => {
+        setAllArticleIDs(res.data);
         const ids = res.data.filter((id, index) => {
           if (index < 20) {
             return id;
           }
         });
-        console.log(ids);
-        axios
-          .all(
-            ids.map((id) =>
-              axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
-            )
-          )
-          .then((data) => {
-            const articles = data.flat().map((item) => item.data);
-            setArticleData(articles);
-            setLoading(false);
-          })
-          .catch((error) => {
-            setLoading(false);
-            setError("Something went wrong, please try again!");
-          });
+        getItems(ids);
       });
   }, [setError]);
-
-  console.log(newsArticles);
 
   return (
     <BrowserRouter>
@@ -48,7 +51,16 @@ function App() {
           path="/"
           element={<Layout isLoading={isLoading} error={error} />}
         >
-          <Route index element={<NewsGallery newsArticles={newsArticles} />} />
+          <Route
+            index
+            element={
+              <NewsGallery
+                getItems={getItems}
+                allArticleIDs={allArticleIDs}
+                newsArticles={newsArticles}
+              />
+            }
+          />
           <Route
             path="/:id"
             element={<SingleStory newsArticles={newsArticles} />}

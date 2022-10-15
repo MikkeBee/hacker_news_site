@@ -11,7 +11,6 @@ const SingleStory = ({ newsArticles }) => {
     const readableDate = dateObj.toLocaleString();
     return readableDate;
   };
-  console.log(newsArticle);
 
   if (newsArticles.length > 0) {
     return (
