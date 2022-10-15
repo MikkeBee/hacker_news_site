@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classes from "./newsgallery.module.css";
 import LoadButton from "../LoadButton/LoadButton";
+import ArrowButton from "../ArrowButton/ArrowButton";
 
 const NewsGallery = ({ allArticleIDs, getItems, newsArticles }) => {
-  const [showButton, setShowButton] = useState(false);
+  const [showTopButton, setShowTopButton] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 500) {
-        setShowButton(true);
+      if (window.pageYOffset > 400) {
+        setShowTopButton(true);
       } else {
-        setShowButton(false);
+        setShowTopButton(false);
       }
     });
   }, []);
@@ -25,6 +26,13 @@ const NewsGallery = ({ allArticleIDs, getItems, newsArticles }) => {
     getItems(nextFetchIDs);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   if (newsArticles.length > 0) {
     return (
       <div className={classes.newsGallery}>
@@ -35,7 +43,8 @@ const NewsGallery = ({ allArticleIDs, getItems, newsArticles }) => {
             </Link>
           ))}
         </ol>
-        {showButton && <LoadButton clickHandler={clickHandler} />}
+        <LoadButton clickHandler={clickHandler} />
+        {showTopButton && <ArrowButton scrollToTop={scrollToTop} />}
       </div>
     );
   }

@@ -1,27 +1,28 @@
-.loadButton {
+.arrowUp {
   height: 3rem;
-  width: 12rem;
+  width: 3rem;
   background-color: blue;
   color: white;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 50%;
+  border: none;
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 0 5px rgb(155, 155, 155);
-  margin-bottom: 2rem;
+  box-shadow: 0 0 2px rgb(155, 155, 155);
 }
 
-.loadButton:hover {
+.arrowUp i {
+  font-size: 2rem;
+}
+
+.arrowUp:hover {
   background-color: rgb(33, 33, 207);
 }
 
-.loadButton:active {
+.arrowUp:active {
   background-color: rgb(33, 33, 207);
   box-shadow: 0 2px rgb(155, 155, 155);
   transform: translateY(2px);
 }
-
-/* @media (max-width: 1051px) {
-  .loadButton {
-    
-  }
-} ; */

@@ -18,7 +18,7 @@ ol a {
   counter-increment: num;
   padding: 1rem;
   background-color: white;
-  width: 45rem;
+  width: auto;
   margin: 1rem;
   border-radius: 5px;
   border: rgb(162, 162, 162) 2px;
@@ -34,3 +34,12 @@ ol a {
 .newsItem:before {
   content: counter(num) ". ";
 }
+
+@media (max-width: 1051px) {
+  .newsGallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+} ;

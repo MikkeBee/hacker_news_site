@@ -1,6 +1,13 @@
 .articleGallery {
-  padding-left: 1rem;
-  padding-bottom: 4rem;
+  margin: 2rem;
+  padding: 2rem;
+  width: 60rem;
+  height: 12rem;
+  border-radius: 5px;
+  border-radius: 5px;
+  border: rgb(162, 162, 162) 2px;
+  border-style: solid;
+  box-shadow: 0 0 5px rgb(155, 155, 155);
 }
 
 .articleGallery p {
