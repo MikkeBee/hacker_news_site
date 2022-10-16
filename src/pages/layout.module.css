@@ -1,7 +1,8 @@
 .ring {
   position: absolute;
-  top: 20rem;
+  top: 30%;
   right: 40%;
+  left: 40%;
   width: 15rem;
   height: 15rem;
   border-radius: 50%;
@@ -22,5 +23,26 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 626px) {
+  .ring {
+    right: 30%;
+    left: 30%;
+  }
+}
+
+@media (max-width: 440px) {
+  .ring {
+    right: 20%;
+    left: 20%;
+  }
+}
+
+@media (max-width: 335px) {
+  .ring {
+    width: 12rem;
+    height: 12rem;
   }
 }
