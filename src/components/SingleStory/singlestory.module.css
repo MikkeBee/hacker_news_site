@@ -36,10 +36,22 @@
 @media (max-width: 412px) {
   .articleGallery {
     width: 20rem;
-    height: 25rem;
+    height: 20rem;
   }
 
   .articleGallery a {
-    flex-wrap: wrap;
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 372px) {
+  .articleGallery {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 281px) {
+  .articleGallery {
+    width: 14rem;
   }
 }
