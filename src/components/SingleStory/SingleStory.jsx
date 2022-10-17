@@ -21,7 +21,7 @@ const SingleStory = ({ newsArticles }) => {
           <p>Date: {unixConversion()}</p>
           <p>
             Link:{" "}
-            <a href="{newsArticle.url}" target="_blank">
+            <a href={newsArticle.url} target="_blank">
               {newsArticle.url}
             </a>
           </p>
